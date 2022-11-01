@@ -50,9 +50,25 @@
         {{- /* Meta */ -}}
         <div class="post-meta">
             <div class="post-meta-line">
+                {{- if eq $params.reproduce true -}}
+                <span class="post-author">
+                    <i class="custom-icon iconfont icon-weibiaoti-"></i>
+                </span>&nbsp;
+                {{- end -}}
+
+                {{- if eq $params.translate true -}}
+                <span class="post-author">
+                    <i class="custom-icon iconfont icon-shuyi_fanyi-105"></i>
+                </span>&nbsp;
+                {{- end -}}
+
+                <!-- 转载不显示作者 -->
+                {{- if ne $params.reproduce true -}}
                 <span class="post-author">
                     {{- partial "meta/author.html" . }}
                 </span>
+                {{- end -}}
+
                 {{- with .Params.categories | or .Params.series -}}
                     &nbsp;<span class="post-category">
                         {{- T "includedIn" | safeHTML -}}
