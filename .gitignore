@@ -22,3 +22,5 @@ $RECYCLE.BIN/
 # Hugo
 .hugo_build.lock
 jsconfig.json
+
+.idea
