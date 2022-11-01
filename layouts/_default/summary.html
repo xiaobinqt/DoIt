@@ -35,9 +35,24 @@
 
     {{- /* Meta */ -}}
     <div class="post-meta">
+
+        {{- if eq $params.reproduce true -}}
+        <span class="post-author">
+            <i class="custom-icon iconfont icon-weibiaoti-"></i>
+        </span>&nbsp;
+        {{- end -}}
+
+        {{- if eq $params.translate true -}}
+        <span class="post-author">
+                    <i class="custom-icon iconfont icon-shuyi_fanyi-105"></i>
+                </span>&nbsp;
+        {{- end -}}
+
+        {{- if ne $params.reproduce true -}}
         <span class="post-author">
             {{- partial "meta/author" . }}
         </span>
+        {{- end -}}
 
         {{- with .Site.Params.dateFormat | default "2006-01-02" | .PublishDate.Format -}}
             &nbsp;<span class="post-publish">
