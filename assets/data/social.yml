@@ -572,3 +572,17 @@ rss:
   Newtab: true
   Icon:
     Class: fas fa-rss fa-fw
+
+leetcode:
+  Weight: 73
+  Prefix: https://leetcode.cn/
+  Title: LeetCode
+  Icon:
+    Src: svg/icons/leetcode.svg
+
+csdn:
+  Weight: 74
+  Prefix: https://blog.csdn.net/
+  Title: CSDN
+  Icon:
+    Src: svg/icons/csdn.svg
