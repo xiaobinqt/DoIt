@@ -32,7 +32,11 @@
                     {{- with .Page -}}
                         {{- $url = .RelPermalink -}}
                     {{- end -}}
-                    <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
+
+                {{- $openTarget := strings.Contains $url "-open-blank-target" -}}
+                {{- $url := strings.Replace $url "-open-blank-target" "" -1 -}}
+
+                    <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }} {{ if $openTarget }} rel="noopener noreferrer" target="_blank"{{ end }}>
                         {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                     </a>
                 {{- end -}}
@@ -154,7 +158,11 @@
                 {{- with .Page -}}
                     {{- $url = .RelPermalink -}}
                 {{- end -}}
-                <a class="menu-item" href="{{ $url }}" title="{{ .Title }}"{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
+
+            {{- $openTarget := strings.Contains $url "-open-blank-target" -}}
+            {{- $url := strings.Replace $url "-open-blank-target" "" -1 -}}
+
+                <a class="menu-item" href="{{ $url }}" title="{{ .Title }}"{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }} {{ if $openTarget }} rel="noopener noreferrer" target="_blank"{{ end }}>
                     {{- .Pre | safeHTML }}{{ .Name }}{{ .Post | safeHTML -}}
                 </a>
             {{- end -}}
